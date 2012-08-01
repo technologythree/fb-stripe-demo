@@ -4,3 +4,4 @@ Update the following config files with your API keys:
 link:config/initializers/omniauth.rb
 link:config/initializers/stripe.rb
 
+Demo URL: http://protected-hamlet-4336.herokuapp.com/
