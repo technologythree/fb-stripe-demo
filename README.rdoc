@@ -1,7 +1,8 @@
 This is a Ruby on Rails demo application showcasing a new User sign up using their Facebook profile and payment processing using Stripe
 
 Update the following config files with your API keys:
-link:config/initializers/omniauth.rb
-link:config/initializers/stripe.rb
+
+* link:fb-stripe-demo/config/initializers/omniauth.rb
+* link:fb-stripe-demo/config/initializers/stripe.rb
 
 Demo URL: http://protected-hamlet-4336.herokuapp.com/
