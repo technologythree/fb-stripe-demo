@@ -1,0 +1,48 @@
+<div class="well alert alert-block">
+	<h4>By submitting this form your user profile will be created and TEST Credit Card will be charged</h4>
+<br>
+
+<%= form_tag(sessions_create_payment_url, :method => :post, id: "new_subscription") do |f| %>
+<fieldset>
+	<div id="stripe_error">
+	  <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+	</div>
+	
+	<h2>Total: $19 USD</h2>
+	<%= hidden_field_tag :user_stripe_card_token, '' %>
+	<div class="control-group">
+	  <%= label_tag "Your Name" %>
+	  <%= text_field_tag :first_name, @user.first_name, class: 'span2' %>
+	  <%= text_field_tag :last_name, @user.last_name, class: 'span2' %>
+	</div>
+	
+	<div class="control-group">
+	  <%= label_tag :email %>
+	  <%= email_field_tag :email, @user.email, required: 'true' %>
+	</div>
+	
+	<% if @user.stripe_card_token.present? %>
+	  Credit card has been provided.
+	<% else %>
+	  <div class="control-group">
+	    <%= label_tag :card_number, "TEST Credit Card Number" %>
+	    <%= number_field_tag :card_number, '4242424242424242', name: nil, autocomplete: "off", class: 'span2', disabled: "true" %>
+	  </div>
+	
+	  <div class="control-group">
+	    <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+	    <%= number_field_tag :card_code, '234', name: nil, in: 100...999, autocomplete: "off", class: 'span1', required: 'true' %>
+	  </div>
+	
+	  <div class="control-group">
+	    <%= label_tag :card_month, "Card Expiration" %>
+	    <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", class: 'span2'} %>
+	    <%= select_year nil, {start_year: Date.today.year+1, end_year: Date.today.year+15}, {name: nil, id: "card_year", class: 'span1'} %>
+	  </div>
+	<%= submit_tag "Create My Account", :class => "btn btn-success btn-large" %> <%= link_to 'cancel', :back %>
+	<% end %>
+	
+<fieldset>
+	
+<% end %>
+</div>

@@ -1,0 +1,13 @@
+<div class="well span12  alert alert-block">
+
+	<% if flash[:notice] %>
+		<div class="alert alert-success"> 
+		  <%= flash[:notice] %>
+		</div>
+	<% end %>
+
+	<p class="alert alert-block">This is a Ruby on Rails demo application showcasing a new User sign up using their Facebook profile and payment processing using <%= link_to "Stripe", "https://stripe.com/"%></p>
+	<p>Sign Up for only <strong>$19 USD</strong></p>
+	<p><%= link_to image_tag('facebook-connect.png'), "/auth/facebook" %></p>
+
+</div>
